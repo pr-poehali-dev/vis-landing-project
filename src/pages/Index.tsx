@@ -63,12 +63,9 @@ const Index = () => {
               <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
                 Компания ВИС — официальный дилер завода "Байкальский газобетон". Более 12 000 клиентов выбирают нас за качество, надежность и удобную доставку в пределах Приморского края.
               </p>
-              <p className="text-base text-muted-foreground mb-10 leading-relaxed">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Наше преимущество: собственный ж/д тупик для быстрой отгрузки и доступ к лучшему газобетону, производимому на немецком оборудовании.
               </p>
-              <Button size="lg" className="bg-accent hover:bg-accent/90 text-lg px-8 h-14" asChild>
-                <a href="#contact">Заказать консультацию</a>
-              </Button>
             </div>
 
             <Card className="p-8 shadow-xl animate-fade-in">
