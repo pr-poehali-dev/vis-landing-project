@@ -41,33 +41,33 @@ const Index = () => {
       <section className="relative pt-32 pb-20 px-4 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 -z-10" />
         <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="animate-fade-in">
-              <h1 className="text-4xl md:text-5xl font-bold text-primary leading-snug mb-6 max-w-xl">
-                Газобетон высочайшего качества для вашего идеального дома
-              </h1>
-              <div className="flex items-center gap-4 mb-6 text-sm font-semibold text-foreground">
-                <span className="flex items-center gap-2">
-                  <Icon name="Check" className="text-accent" size={20} />
-                  Точная геометрия
-                </span>
-                <span className="flex items-center gap-2">
-                  <Icon name="Check" className="text-accent" size={20} />
-                  23 года опыта
-                </span>
-                <span className="flex items-center gap-2">
-                  <Icon name="Check" className="text-accent" size={20} />
-                  Прямой дилер
-                </span>
-              </div>
-              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                Компания ВИС — официальный дилер завода "Байкальский газобетон". Более 12 000 клиентов выбирают нас за качество, надежность и удобную доставку в пределах Приморского края.
-              </p>
-              <p className="text-base text-muted-foreground leading-relaxed">
-                Наше преимущество: собственный ж/д тупик для быстрой отгрузки и доступ к лучшему газобетону, производимому на немецком оборудовании.
-              </p>
+          <div className="text-center mb-16 animate-fade-in">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary leading-snug mb-6 mx-auto max-w-3xl">
+              Газобетон высочайшего качества для вашего идеального дома
+            </h1>
+            <div className="flex items-center justify-center gap-6 mb-6 text-sm font-semibold text-foreground flex-wrap">
+              <span className="flex items-center gap-2">
+                <Icon name="Check" className="text-accent" size={20} />
+                Точная геометрия
+              </span>
+              <span className="flex items-center gap-2">
+                <Icon name="Check" className="text-accent" size={20} />
+                23 года опыта
+              </span>
+              <span className="flex items-center gap-2">
+                <Icon name="Check" className="text-accent" size={20} />
+                Прямой дилер
+              </span>
             </div>
+            <p className="text-lg text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto">
+              Компания ВИС — официальный дилер завода "Байкальский газобетон". Более 12 000 клиентов выбирают нас за качество, надежность и удобную доставку в пределах Приморского края.
+            </p>
+            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+              Наше преимущество: собственный ж/д тупик для быстрой отгрузки и доступ к лучшему газобетону, производимому на немецком оборудовании.
+            </p>
+          </div>
 
+          <div className="max-w-xl mx-auto">
             <Card className="p-8 shadow-xl animate-fade-in">
               <h3 className="text-2xl font-bold text-primary mb-6">Получить консультацию</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
