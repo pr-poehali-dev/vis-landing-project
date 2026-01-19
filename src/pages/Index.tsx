@@ -47,15 +47,15 @@ const Index = () => {
             </h1>
             <div className="flex items-center justify-center gap-6 mb-6 text-sm font-semibold text-foreground flex-wrap">
               <span className="flex items-center gap-2">
-                <Icon name="Check" className="text-accent" size={20} />
+                <Icon name="Check" className="text-accent animate-icon" size={20} />
                 Точная геометрия
               </span>
               <span className="flex items-center gap-2">
-                <Icon name="Check" className="text-accent" size={20} />
+                <Icon name="Check" className="text-accent animate-icon" size={20} />
                 23 года опыта
               </span>
               <span className="flex items-center gap-2">
-                <Icon name="Check" className="text-accent" size={20} />
+                <Icon name="Check" className="text-accent animate-icon" size={20} />
                 Прямой дилер
               </span>
             </div>
@@ -118,7 +118,7 @@ const Index = () => {
               { icon: "Truck", title: "Удобная доставка", text: "Быстрая отгрузка по краю" }
             ].map((item, idx) => (
               <Card key={idx} className="p-6 hover:shadow-lg transition-shadow">
-                <Icon name={item.icon as any} className="text-accent mb-4" size={40} />
+                <Icon name={item.icon as any} className="text-accent mb-4 animate-icon" size={40} />
                 <h3 className="text-xl font-semibold text-primary mb-2">{item.title}</h3>
                 <p className="text-muted-foreground">{item.text}</p>
               </Card>
@@ -139,7 +139,7 @@ const Index = () => {
           <div className="grid md:grid-cols-3 gap-8">
             <Card className="p-8 border-2 border-primary/20 hover:border-primary transition-colors">
               <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon name="Factory" className="text-primary" size={32} />
+                <Icon name="Factory" className="text-primary animate-icon" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-primary mb-4">Немецкая линия производства</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -150,7 +150,7 @@ const Index = () => {
 
             <Card className="p-8 border-2 border-accent/20 hover:border-accent transition-colors">
               <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon name="TrainTrack" className="text-accent" size={32} />
+                <Icon name="TrainTrack" className="text-accent animate-icon" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-accent mb-4">Собственный ж/д тупик</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -161,7 +161,7 @@ const Index = () => {
 
             <Card className="p-8 border-2 border-secondary/20 hover:border-secondary transition-colors">
               <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon name="ShieldCheck" className="text-secondary" size={32} />
+                <Icon name="ShieldCheck" className="text-secondary animate-icon" size={32} />
               </div>
               <h3 className="text-2xl font-bold text-secondary mb-4">23 года опыта</h3>
               <p className="text-muted-foreground leading-relaxed">
@@ -235,7 +235,7 @@ const Index = () => {
               { icon: "Store", text: "Минимальный заказ: Отсутствует (розница и опт)" }
             ].map((item, idx) => (
               <Card key={idx} className="p-6 flex items-start gap-4">
-                <Icon name={item.icon as any} className="text-accent flex-shrink-0" size={24} />
+                <Icon name={item.icon as any} className="text-accent flex-shrink-0 animate-icon" size={24} />
                 <p className="text-sm text-muted-foreground">{item.text}</p>
               </Card>
             ))}
@@ -255,7 +255,7 @@ const Index = () => {
                 <div className="space-y-6">
                   <div>
                     <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="Phone" size={20} />
+                      <Icon name="Phone" size={20} className="animate-icon" />
                       Телефоны
                     </h4>
                     <div className="space-y-2 ml-7">
@@ -267,7 +267,7 @@ const Index = () => {
 
                   <div>
                     <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="MessageCircle" size={20} />
+                      <Icon name="MessageCircle" size={20} className="animate-icon" />
                       Мессенджеры
                     </h4>
                     <div className="space-y-2 ml-7">
@@ -285,7 +285,7 @@ const Index = () => {
 
                   <div>
                     <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="Mail" size={20} />
+                      <Icon name="Mail" size={20} className="animate-icon" />
                       Email
                     </h4>
                     <p className="text-muted-foreground ml-7">
@@ -295,7 +295,7 @@ const Index = () => {
 
                   <div>
                     <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="MapPin" size={20} />
+                      <Icon name="MapPin" size={20} className="animate-icon" />
                       Адрес
                     </h4>
                     <p className="text-muted-foreground ml-7">г. Артем, ул. Вокзальная, 114</p>
@@ -303,7 +303,7 @@ const Index = () => {
 
                   <div>
                     <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="Clock" size={20} />
+                      <Icon name="Clock" size={20} className="animate-icon" />
                       Время работы
                     </h4>
                     <p className="text-muted-foreground ml-7">Пн-Пт: 8:30-17:30 (без обеда)</p>
