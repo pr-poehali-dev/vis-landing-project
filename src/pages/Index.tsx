@@ -67,10 +67,10 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="max-w-xl mx-auto">
-            <Card className="p-8 shadow-xl animate-fade-in">
-              <h3 className="text-2xl font-bold text-primary mb-6">Получить консультацию</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="max-w-md mx-auto">
+            <Card className="p-6 shadow-xl animate-fade-in">
+              <h3 className="text-xl font-bold text-primary mb-4">Получить консультацию</h3>
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <Input
                   placeholder="Ваше имя"
                   value={formData.name}
@@ -90,13 +90,7 @@ const Index = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
-                <Textarea
-                  placeholder="Ваш вопрос (необязательно)"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={3}
-                />
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+                <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
                   Отправить заявку
                 </Button>
               </form>
