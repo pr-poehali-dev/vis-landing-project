@@ -43,7 +43,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
-              <h1 className="text-5xl md:text-6xl font-extrabold text-primary leading-tight mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-primary leading-snug mb-6 max-w-xl">
                 Газобетон высочайшего качества для вашего идеального дома
               </h1>
               <div className="flex items-center gap-4 mb-6 text-sm font-semibold text-foreground">
