@@ -356,13 +356,13 @@ const Index = () => {
               </Card>
 
               <a 
-                href="https://yandex.ru/maps/org/vostok_invest_stal/1186141819/" 
+                href="https://yandex.ru/maps/-/CDdkFCvv" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
               >
                 <iframe 
-                  src="https://yandex.ru/map-widget/v1/?um=constructor%3Acd9f1f8f8e8d8c8b8a8989878685848382818079787776757473727170&amp;source=constructor" 
+                  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=220003283954" 
                   width="100%" 
                   height="350" 
                   frameBorder="0"
