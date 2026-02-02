@@ -4,8 +4,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -16,7 +18,10 @@ const Index = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Заявка отправлена:", formData);
-    alert("Спасибо! Мы свяжемся с вами в ближайшее время.");
+    toast({
+      title: "Заявка отправлена!",
+      description: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+    });
     setFormData({ name: "", phone: "", email: "", message: "" });
   };
 
