@@ -72,34 +72,14 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="max-w-md mx-auto">
-            <Card className="p-6 shadow-xl animate-fade-in">
-              <h3 className="text-xl font-bold text-primary mb-4">Получить консультацию</h3>
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <Input
-                  placeholder="Ваше имя"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                />
-                <Input
-                  type="tel"
-                  placeholder="Телефон"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  required
-                />
-                <Input
-                  type="email"
-                  placeholder="Email (для рассылки)"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                />
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
-                  Отправить заявку
-                </Button>
-              </form>
-            </Card>
+          <div className="max-w-4xl mx-auto mt-12">
+            <div className="relative w-full rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '1800/700' }}>
+              <img 
+                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&h=700&fit=crop" 
+                alt="Баннер" 
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
