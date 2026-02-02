@@ -247,69 +247,107 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl font-bold text-center text-primary mb-16">Контакты</h2>
 
-          <div className="grid md:grid-cols-[1fr,400px] gap-12">
-            <div>
-              <Card className="p-8 mb-8">
-                <h3 className="text-2xl font-bold text-primary mb-6">Свяжитесь с нами</h3>
-                
-                <div className="space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="Phone" size={20} className="animate-icon" />
-                      Телефоны
-                    </h4>
-                    <div className="space-y-2 ml-7">
-                      <p className="text-muted-foreground">Многоканальный: <a href="tel:+74232448010" className="text-accent hover:underline">+7 (423) 244-80-10</a></p>
-                      <p className="text-muted-foreground">Оптовый отдел: <a href="tel:+79147922784" className="text-accent hover:underline">+7 (914) 792-27-84</a></p>
-                      <p className="text-muted-foreground">Розничный отдел: <a href="tel:+79147292149" className="text-accent hover:underline">+7 (914) 729-21-49</a></p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="MessageCircle" size={20} className="animate-icon" />
-                      Мессенджеры
-                    </h4>
-                    <div className="space-y-2 ml-7">
-                      <p className="text-muted-foreground">
-                        <a href="https://wa.me/79147922784" className="text-accent hover:underline" target="_blank" rel="noopener">WhatsApp (опт): +7 (914) 792-27-84</a>
-                      </p>
-                      <p className="text-muted-foreground">
-                        <a href="https://t.me/79147922784" className="text-accent hover:underline" target="_blank" rel="noopener">Telegram (опт): +7 (914) 792-27-84</a>
-                      </p>
-                      <p className="text-muted-foreground">
-                        <a href="https://wa.me/79147292149" className="text-accent hover:underline" target="_blank" rel="noopener">WhatsApp (розница): +7 (914) 729-21-49</a>
-                      </p>
-                    </div>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="Mail" size={20} className="animate-icon" />
-                      Email
-                    </h4>
-                    <p className="text-muted-foreground ml-7">
-                      <a href="mailto:vostokinveststal@mail.ru" className="text-accent hover:underline">vostokinveststal@mail.ru</a>
-                    </p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="MapPin" size={20} className="animate-icon" />
-                      Адрес
-                    </h4>
-                    <p className="text-muted-foreground ml-7">г. Артем, ул. Вокзальная, 114</p>
-                  </div>
-
-                  <div>
-                    <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                      <Icon name="Clock" size={20} className="animate-icon" />
-                      Время работы
-                    </h4>
-                    <p className="text-muted-foreground ml-7">Пн-Пт: 8:30-17:30 (без обеда)</p>
-                    <p className="text-muted-foreground ml-7">Сб-Вс: Выходной</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="p-8">
+              <h3 className="text-2xl font-bold text-primary mb-6">Свяжитесь с нами</h3>
+              
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="Phone" size={20} className="animate-icon" />
+                    Телефоны
+                  </h4>
+                  <div className="space-y-2 ml-7">
+                    <p className="text-muted-foreground">Многоканальный: <a href="tel:+74232448010" className="text-accent hover:underline">+7 (423) 244-80-10</a></p>
+                    <p className="text-muted-foreground">Оптовый отдел: <a href="tel:+79147922784" className="text-accent hover:underline">+7 (914) 792-27-84</a></p>
+                    <p className="text-muted-foreground">Розничный отдел: <a href="tel:+79147292149" className="text-accent hover:underline">+7 (914) 729-21-49</a></p>
                   </div>
                 </div>
+
+                <div>
+                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="MessageCircle" size={20} className="animate-icon" />
+                    Мессенджеры
+                  </h4>
+                  <div className="space-y-2 ml-7">
+                    <p className="text-muted-foreground">
+                      <a href="https://wa.me/79147922784" className="text-accent hover:underline" target="_blank" rel="noopener">WhatsApp (опт): +7 (914) 792-27-84</a>
+                    </p>
+                    <p className="text-muted-foreground">
+                      <a href="https://t.me/79147922784" className="text-accent hover:underline" target="_blank" rel="noopener">Telegram (опт): +7 (914) 792-27-84</a>
+                    </p>
+                    <p className="text-muted-foreground">
+                      <a href="https://wa.me/79147292149" className="text-accent hover:underline" target="_blank" rel="noopener">WhatsApp (розница): +7 (914) 729-21-49</a>
+                    </p>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="Mail" size={20} className="animate-icon" />
+                    Email
+                  </h4>
+                  <p className="text-muted-foreground ml-7">
+                    <a href="mailto:vostokinveststal@mail.ru" className="text-accent hover:underline">vostokinveststal@mail.ru</a>
+                  </p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="MapPin" size={20} className="animate-icon" />
+                    Адрес
+                  </h4>
+                  <p className="text-muted-foreground ml-7">г. Артем, ул. Вокзальная, 114</p>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
+                    <Icon name="Clock" size={20} className="animate-icon" />
+                    Время работы
+                  </h4>
+                  <p className="text-muted-foreground ml-7">Пн-Пт: 8:30-17:30 (без обеда)</p>
+                  <p className="text-muted-foreground ml-7">Сб-Вс: Выходной</p>
+                </div>
+              </div>
+            </Card>
+
+            <div className="space-y-8">
+              <Card className="p-6">
+                <h3 className="text-xl font-bold text-primary mb-4">Оставить заявку</h3>
+                <form onSubmit={handleSubmit} className="space-y-3">
+                  <Input
+                    placeholder="Ваше имя"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    required
+                    className="h-10"
+                  />
+                  <Input
+                    type="tel"
+                    placeholder="Телефон"
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    required
+                    className="h-10"
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email (для рассылки)"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="h-10"
+                  />
+                  <Textarea
+                    placeholder="Ваш вопрос"
+                    value={formData.message}
+                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    rows={3}
+                    className="resize-none"
+                  />
+                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
+                    Отправить заявку
+                  </Button>
+                </form>
               </Card>
 
               <a 
@@ -321,50 +359,12 @@ const Index = () => {
                 <iframe 
                   src="https://yandex.ru/map-widget/v1/?um=constructor%3Acd9f1f8f8e8d8c8b8a8989878685848382818079787776757473727170&amp;source=constructor" 
                   width="100%" 
-                  height="400" 
+                  height="350" 
                   frameBorder="0"
                   className="pointer-events-none"
                 ></iframe>
               </a>
             </div>
-
-            <Card className="p-6 h-fit">
-              <h3 className="text-xl font-bold text-primary mb-4">Оставить заявку</h3>
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <Input
-                  placeholder="Ваше имя"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  required
-                  className="h-10"
-                />
-                <Input
-                  type="tel"
-                  placeholder="Телефон"
-                  value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  required
-                  className="h-10"
-                />
-                <Input
-                  type="email"
-                  placeholder="Email (для рассылки)"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="h-10"
-                />
-                <Textarea
-                  placeholder="Ваш вопрос"
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={3}
-                  className="resize-none"
-                />
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
-                  Отправить заявку
-                </Button>
-              </form>
-            </Card>
           </div>
         </div>
       </section>
