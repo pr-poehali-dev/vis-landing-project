@@ -247,7 +247,7 @@ const Index = () => {
         <div className="container mx-auto max-w-6xl">
           <h2 className="text-4xl font-bold text-center text-primary mb-16">Контакты</h2>
 
-          <div className="grid md:grid-cols-2 gap-12">
+          <div className="grid md:grid-cols-[1fr,400px] gap-12">
             <div>
               <Card className="p-8 mb-8">
                 <h3 className="text-2xl font-bold text-primary mb-6">Свяжитесь с нами</h3>
@@ -311,16 +311,32 @@ const Index = () => {
                   </div>
                 </div>
               </Card>
+
+              <a 
+                href="https://yandex.ru/maps/org/vostok_invest_stal/1186141819/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
+              >
+                <iframe 
+                  src="https://yandex.ru/map-widget/v1/?um=constructor%3Acd9f1f8f8e8d8c8b8a8989878685848382818079787776757473727170&amp;source=constructor" 
+                  width="100%" 
+                  height="400" 
+                  frameBorder="0"
+                  className="pointer-events-none"
+                ></iframe>
+              </a>
             </div>
 
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold text-primary mb-6">Оставить заявку</h3>
-              <form onSubmit={handleSubmit} className="space-y-4">
+            <Card className="p-6 h-fit">
+              <h3 className="text-xl font-bold text-primary mb-4">Оставить заявку</h3>
+              <form onSubmit={handleSubmit} className="space-y-3">
                 <Input
                   placeholder="Ваше имя"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   required
+                  className="h-10"
                 />
                 <Input
                   type="tel"
@@ -328,20 +344,23 @@ const Index = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   required
+                  className="h-10"
                 />
                 <Input
                   type="email"
                   placeholder="Email (для рассылки)"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="h-10"
                 />
                 <Textarea
                   placeholder="Ваш вопрос"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  rows={4}
+                  rows={3}
+                  className="resize-none"
                 />
-                <Button type="submit" className="w-full bg-accent hover:bg-accent/90" size="lg">
+                <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
                   Отправить заявку
                 </Button>
               </form>
