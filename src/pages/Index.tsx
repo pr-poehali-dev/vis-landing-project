@@ -1,387 +1,459 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import Icon from "@/components/ui/icon";
-import { useState } from "react";
-import { useToast } from "@/hooks/use-toast";
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
+import Icon from '@/components/ui/icon';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Index = () => {
-  const { toast } = useToast();
+  const [selectedDiameter, setSelectedDiameter] = useState<string>('all');
+  const [selectedPressureDiameter, setSelectedPressureDiameter] = useState<string>('all');
   const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    message: ""
+    name: '',
+    phone: '',
+    email: '',
+    product: '',
+    volume: ''
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Заявка отправлена:", formData);
-    toast({
-      title: "Заявка отправлена!",
-      description: "Спасибо! Мы свяжемся с вами в ближайшее время.",
-    });
-    setFormData({ name: "", phone: "", email: "", message: "" });
+    console.log('Form submitted:', formData);
+    alert('Спасибо! Мы свяжемся с вами в течение 2 часов.');
   };
 
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const pressureFreePipes = [
+    { diameter: '100', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '150', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '200', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '300', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '400', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '500', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+  ];
+
+  const pressurePipes = [
+    { diameter: '100', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '150', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '200', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '300', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '400', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+    { diameter: '500', length: '3950', image: 'https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop' },
+  ];
+
+  const slates = [
+    { type: 'Волнистый 8-волновой', size: '1750×1130', colors: ['Серый', 'Красный', 'Зеленый', 'Коричневый'], image: 'https://images.unsplash.com/photo-1632207691143-643e2753a2c4?w=400&h=300&fit=crop' },
+    { type: 'Плоский 8мм', size: '3000×1500', colors: ['Серый'], image: 'https://images.unsplash.com/photo-1632207691143-643e2753a2c4?w=400&h=300&fit=crop' },
+    { type: 'Плоский 10мм', size: '3000×1500', colors: ['Серый'], image: 'https://images.unsplash.com/photo-1632207691143-643e2753a2c4?w=400&h=300&fit=crop' },
+  ];
+
+  const filteredPressureFreePipes = selectedDiameter === 'all' ? pressureFreePipes : pressureFreePipes.filter(p => p.diameter === selectedDiameter);
+  const filteredPressurePipes = selectedPressureDiameter === 'all' ? pressurePipes : pressurePipes.filter(p => p.diameter === selectedPressureDiameter);
+
   return (
-    <div className="min-h-screen bg-background">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="text-3xl font-bold text-primary">ВИС</div>
+    <div className="min-h-screen">
+      <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="text-2xl font-bold text-primary">
+              ВостокИнвестСталь
+            </div>
+            <nav className="hidden md:flex items-center gap-6">
+              <button onClick={() => scrollToSection('products')} className="text-secondary hover:text-primary transition-colors">О продукции</button>
+              <button onClick={() => scrollToSection('advantages')} className="text-secondary hover:text-primary transition-colors">Преимущества</button>
+              <button onClick={() => scrollToSection('pipes')} className="text-secondary hover:text-primary transition-colors">Трубы</button>
+              <button onClick={() => scrollToSection('slate')} className="text-secondary hover:text-primary transition-colors">Шифер</button>
+              <button onClick={() => scrollToSection('contacts')} className="text-secondary hover:text-primary transition-colors">Контакты</button>
+            </nav>
+            <Button onClick={() => scrollToSection('request-form')} className="bg-primary hover:bg-primary/90">
+              <Icon name="FileText" size={18} className="mr-2" />
+              Запросить КП
+            </Button>
           </div>
-          <nav className="hidden md:flex items-center gap-8">
-            <a href="#advantages" className="text-sm font-medium hover:text-primary transition-colors">Преимущества</a>
-            <a href="#products" className="text-sm font-medium hover:text-primary transition-colors">Продукция</a>
-            <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
-          </nav>
-          <Button asChild className="bg-accent hover:bg-accent/90">
-            <a href="#contact">Заказать звонок</a>
-          </Button>
         </div>
       </header>
 
-      <section className="relative pt-32 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-accent/5 -z-10" />
-        <div className="container mx-auto max-w-6xl">
-          <div className="text-center mb-16 animate-fade-in">
-            <h1 className="text-4xl md:text-5xl font-bold text-primary leading-snug mb-6 mx-auto max-w-3xl">
-              Газобетон высочайшего качества для вашего идеального дома
+      <section className="relative bg-gradient-to-br from-gray-900 to-gray-700 text-white py-24 md:py-32">
+        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1920&h=800&fit=crop')] bg-cover bg-center opacity-20"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+              Хризотилцементные трубы и шифер напрямую от производителя
             </h1>
-            <div className="flex items-center justify-center gap-6 mb-6 text-sm font-semibold text-foreground flex-wrap">
-              <span className="flex items-center gap-2">
-                <Icon name="Check" className="text-accent animate-icon" size={20} />
-                Точная геометрия
-              </span>
-              <span className="flex items-center gap-2">
-                <Icon name="Check" className="text-accent animate-icon" size={20} />
-                23 года опыта
-              </span>
-              <span className="flex items-center gap-2">
-                <Icon name="Check" className="text-accent animate-icon" size={20} />
-                Прямой дилер
-              </span>
+            <p className="text-xl md:text-2xl mb-8 text-gray-200">
+              Поставка асбестоцементных изделий по Дальнему Востоку. ГОСТ 1839-80, гарантия 25 лет, отгрузка от 1 дня
+            </p>
+            <div className="flex flex-wrap gap-4 mb-12">
+              <Button onClick={() => scrollToSection('request-form')} size="lg" className="bg-accent hover:bg-accent/90">
+                <Icon name="Download" size={20} className="mr-2" />
+                Скачать прайс
+              </Button>
+              <Button onClick={() => scrollToSection('request-form')} size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+                Получить консультацию
+              </Button>
             </div>
-            <p className="text-lg text-muted-foreground mb-4 leading-relaxed max-w-3xl mx-auto">
-              Компания ВИС — официальный дилер завода "Байкальский газобетон". Более 12 000 клиентов выбирают нас за качество, надежность и удобную доставку в пределах Приморского края.
-            </p>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mx-auto">
-              Наше преимущество: собственный ж/д тупик для быстрой отгрузки и доступ к лучшему газобетону, производимому на немецком оборудовании.
-            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="flex items-center gap-3">
+                <div className="text-3xl">🏭</div>
+                <span className="text-sm">От производителя</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="text-3xl">📋</div>
+                <span className="text-sm">Сертификаты</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="text-3xl">🚚</div>
+                <span className="text-sm">Наличие на складе</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="text-3xl">💰</div>
+                <span className="text-sm">Оптовые цены</span>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="max-w-4xl mx-auto mt-12">
-            <div className="relative w-full rounded-lg overflow-hidden shadow-xl" style={{ aspectRatio: '1800/700' }}>
-              <img 
-                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1800&h=700&fit=crop" 
-                alt="Баннер" 
-                className="w-full h-full object-cover"
-              />
-            </div>
+      <section id="products" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-primary">О продукции</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-8 text-center hover:shadow-xl transition-shadow">
+              <div className="w-20 h-20 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                <Icon name="Pipette" size={40} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Безнапорные трубы</h3>
+              <p className="text-muted-foreground">Для канализации, дренажа и технических сетей. Диаметры от 100 до 500 мм.</p>
+            </Card>
+            <Card className="p-8 text-center hover:shadow-xl transition-shadow">
+              <div className="w-20 h-20 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                <Icon name="Droplet" size={40} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Напорные трубы</h3>
+              <p className="text-muted-foreground">Для водоснабжения под давлением. Высокая прочность и надежность.</p>
+            </Card>
+            <Card className="p-8 text-center hover:shadow-xl transition-shadow">
+              <div className="w-20 h-20 mx-auto mb-6 bg-primary/10 rounded-full flex items-center justify-center">
+                <Icon name="Home" size={40} className="text-primary" />
+              </div>
+              <h3 className="text-xl font-bold mb-4">Шифер волнистый и плоский</h3>
+              <p className="text-muted-foreground">Для кровли, ограждений. Различные цвета и размеры в наличии.</p>
+            </Card>
           </div>
         </div>
       </section>
 
       <section className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-center text-primary mb-6">
-            Как выбрать качественный газобетон для строительства?
-          </h2>
-          <p className="text-center text-lg text-muted-foreground mb-16 max-w-4xl mx-auto leading-relaxed">
-            При возведении дома важно выбрать материал, который обеспечит долговечность конструкции на десятки лет, 
-            хорошую теплоизоляцию, быструю монтаж благодаря точности геометрии и надежность в климате Приморья.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {[
-              { icon: "Shield", title: "Долговечность и прочность", text: "Конструкция на десятилетия" },
-              { icon: "Home", title: "Теплоизоляция", text: "Экономия на отоплении" },
-              { icon: "Ruler", title: "Точная геометрия", text: "Идеальная подгонка блоков" },
-              { icon: "Cloud", title: "Климатическая надежность", text: "Устойчивость в Приморье" },
-              { icon: "Truck", title: "Удобная доставка", text: "Быстрая отгрузка по краю" }
-            ].map((item, idx) => (
-              <Card key={idx} className="p-6 hover:shadow-lg transition-shadow">
-                <Icon name={item.icon as any} className="text-accent mb-4 animate-icon" size={40} />
-                <h3 className="text-xl font-semibold text-primary mb-2">{item.title}</h3>
-                <p className="text-muted-foreground">{item.text}</p>
-              </Card>
-            ))}
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-12 text-primary">Технические характеристики труб</h2>
+          <div className="overflow-x-auto">
+            <table className="w-full max-w-4xl mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+              <thead className="bg-primary text-white">
+                <tr>
+                  <th className="px-6 py-4 text-left">Диаметр, мм</th>
+                  <th className="px-6 py-4 text-left">Длина, мм</th>
+                  <th className="px-6 py-4 text-left">Толщина стенки, мм</th>
+                  <th className="px-6 py-4 text-left">Рабочее давление, МПа</th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { d: '100', l: '3950', t: '9', p: '0.6-0.9' },
+                  { d: '150', l: '3950', t: '11', p: '0.6-0.9' },
+                  { d: '200', l: '3950', t: '14', p: '0.6-0.9' },
+                  { d: '300', l: '3950', t: '18', p: '0.6' },
+                  { d: '400', l: '3950', t: '24', p: '0.6' },
+                  { d: '500', l: '3950', t: '30', p: '0.6' },
+                ].map((row, idx) => (
+                  <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-50' : 'bg-white'}>
+                    <td className="px-6 py-4">{row.d}</td>
+                    <td className="px-6 py-4">{row.l}</td>
+                    <td className="px-6 py-4">{row.t}</td>
+                    <td className="px-6 py-4">{row.p}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-
-          <p className="text-center text-lg text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            На рынке много предложений, но не все соответствуют нужным параметрам. 
-            Компания ВИС предлагает материал, прошедший проверку временем и доверием 12 000+ клиентов.
-          </p>
+          <div className="text-center mt-8">
+            <Button onClick={() => scrollToSection('request-form')} variant="outline" size="lg">
+              <Icon name="Download" size={20} className="mr-2" />
+              Скачать полный каталог
+            </Button>
+          </div>
         </div>
       </section>
 
       <section id="advantages" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-center text-primary mb-16">Почему выбирают ВИС?</h2>
-
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-primary">Преимущества</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-8 border-2 border-primary/20 hover:border-primary transition-colors">
-              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon name="Factory" className="text-primary animate-icon" size={32} />
-              </div>
-              <h3 className="text-2xl font-bold text-primary mb-4">Немецкая линия производства</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Автоклавный газобетон производится на оборудовании немецкого производителя. 
-                Точная геометрия ± 1 мм гарантирует идеальный подгон блоков, экономию раствора и ускорение строительства.
-              </p>
-            </Card>
-
-            <Card className="p-8 border-2 border-accent/20 hover:border-accent transition-colors">
-              <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon name="TrainTrack" className="text-accent animate-icon" size={32} />
-              </div>
-              <h3 className="text-2xl font-bold text-accent mb-4">Собственный ж/д тупик</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Прямой доступ к железнодорожному тупику означает быструю доставку по Приморскому краю, 
-                удобную логистику для больших объемов и конкурентные цены благодаря экономии на доставке.
-              </p>
-            </Card>
-
-            <Card className="p-8 border-2 border-secondary/20 hover:border-secondary transition-colors">
-              <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                <Icon name="ShieldCheck" className="text-secondary animate-icon" size={32} />
-              </div>
-              <h3 className="text-2xl font-bold text-secondary mb-4">23 года опыта</h3>
-              <p className="text-muted-foreground leading-relaxed">
-                Компания работает с 2003 года (23 года на рынке). 12 000+ клиентов по всему Приморскому краю 
-                доверяют нам свои строительные проекты. Это гарантия качества.
-              </p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      <section id="products" className="py-20 px-4 bg-muted/30">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-center text-primary mb-6">Наша продукция</h2>
-          <p className="text-center text-lg text-secondary mb-4 font-semibold">
-            Полный диапазон марок и размеров для любых строительных задач
-          </p>
-          <p className="text-center text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Мы предлагаем автоклавный газобетон различных марок и размеров. Каждый блок прошел строгий контроль качества.
-          </p>
-
-          <Card className="overflow-x-auto mb-12">
-            <table className="w-full">
-              <thead className="bg-primary text-primary-foreground">
-                <tr>
-                  <th className="p-4 text-left">Марка</th>
-                  <th className="p-4 text-left">Плотность (кг/м³)</th>
-                  <th className="p-4 text-left">Теплопроводность (Вт/м·К)</th>
-                  <th className="p-4 text-left">Прочность (МПа)</th>
-                  <th className="p-4 text-left">Применение</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b">
-                  <td className="p-4 font-semibold">D400</td>
-                  <td className="p-4">400</td>
-                  <td className="p-4">0.096</td>
-                  <td className="p-4">1.5</td>
-                  <td className="p-4">Теплоизоляция</td>
-                </tr>
-                <tr className="border-b bg-muted/20">
-                  <td className="p-4 font-semibold">D500</td>
-                  <td className="p-4">500</td>
-                  <td className="p-4">0.12</td>
-                  <td className="p-4">2.5</td>
-                  <td className="p-4">Несущие стены малоэтажных зданий</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="p-4 font-semibold">D600</td>
-                  <td className="p-4">600</td>
-                  <td className="p-4">0.14</td>
-                  <td className="p-4">3.5</td>
-                  <td className="p-4">Несущие стены до 3 этажов</td>
-                </tr>
-                <tr className="bg-muted/20">
-                  <td className="p-4 font-semibold">D700</td>
-                  <td className="p-4">700</td>
-                  <td className="p-4">0.18</td>
-                  <td className="p-4">5.0</td>
-                  <td className="p-4">Многоэтажное строительство</td>
-                </tr>
-              </tbody>
-            </table>
-          </Card>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "Factory", text: "Производство: Завод 'Байкальский газобетон' (немецкое оборудование)" },
-              { icon: "CheckCircle", text: "Контроль качества: Каждый блок проверен" },
-              { icon: "Package", text: "Размеры: От стандартных до нестандартных" },
-              { icon: "Store", text: "Минимальный заказ: Отсутствует (розница и опт)" }
+              { icon: '⚙️', title: 'Точное соответствие ГОСТ', text: 'Все изделия сертифицированы и соответствуют стандартам' },
+              { icon: '🛡️', title: 'Стойкость к коррозии', text: 'Не подвержены ржавчине и химическому воздействию' },
+              { icon: '🔥', title: 'Негорючесть', text: 'Полная пожарная безопасность материала' },
+              { icon: '💪', title: 'Высокая механическая прочность', text: 'Выдерживают значительные нагрузки' },
+              { icon: '⏱️', title: 'Срок службы от 50 лет', text: 'Долговечность и надежность на десятилетия' },
+              { icon: '🚛', title: 'Доставка по региону', text: 'Быстрая отгрузка по Приморью и Дальнему Востоку' },
             ].map((item, idx) => (
-              <Card key={idx} className="p-6 flex items-start gap-4">
-                <Icon name={item.icon as any} className="text-accent flex-shrink-0 animate-icon" size={24} />
-                <p className="text-sm text-muted-foreground">{item.text}</p>
+              <Card key={idx} className="p-6 hover:shadow-xl transition-all hover:-translate-y-1">
+                <div className="text-5xl mb-4">{item.icon}</div>
+                <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                <p className="text-muted-foreground">{item.text}</p>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="py-20 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="text-4xl font-bold text-center text-primary mb-16">Контакты</h2>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="p-8">
-              <h3 className="text-2xl font-bold text-primary mb-6">Свяжитесь с нами</h3>
-              
-              <div className="space-y-6">
-                <div>
-                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                    <Icon name="Phone" size={20} className="animate-icon" />
-                    Телефоны
-                  </h4>
-                  <div className="space-y-2 ml-7">
-                    <p className="text-muted-foreground">Многоканальный: <a href="tel:+74232448010" className="text-accent hover:underline">+7 (423) 244-80-10</a></p>
-                    <p className="text-muted-foreground">Оптовый отдел: <a href="tel:+79147922784" className="text-accent hover:underline">+7 (914) 792-27-84</a></p>
-                    <p className="text-muted-foreground">Розничный отдел: <a href="tel:+79147292149" className="text-accent hover:underline">+7 (914) 729-21-49</a></p>
+      <section id="pipes" className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-primary">Каталог труб</h2>
+          
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold mb-6">Трубы безнапорные</h3>
+            <div className="mb-6">
+              <Select value={selectedDiameter} onValueChange={setSelectedDiameter}>
+                <SelectTrigger className="w-64">
+                  <SelectValue placeholder="Выберите диаметр" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Все диаметры</SelectItem>
+                  <SelectItem value="100">100 мм</SelectItem>
+                  <SelectItem value="150">150 мм</SelectItem>
+                  <SelectItem value="200">200 мм</SelectItem>
+                  <SelectItem value="300">300 мм</SelectItem>
+                  <SelectItem value="400">400 мм</SelectItem>
+                  <SelectItem value="500">500 мм</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {filteredPressureFreePipes.map((pipe, idx) => (
+                <Card key={idx} className="overflow-hidden hover:shadow-xl transition-shadow">
+                  <img src={pipe.image} alt={`Труба ${pipe.diameter}мм`} className="w-full h-48 object-cover" />
+                  <div className="p-6">
+                    <h4 className="text-xl font-bold mb-2">Труба безнапорная {pipe.diameter} мм</h4>
+                    <p className="text-muted-foreground mb-4">Длина: {pipe.length} мм</p>
+                    <Button onClick={() => scrollToSection('request-form')} className="w-full">Запросить цену</Button>
                   </div>
-                </div>
+                </Card>
+              ))}
+            </div>
+          </div>
 
-                <div>
-                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                    <Icon name="MessageCircle" size={20} className="animate-icon" />
-                    Мессенджеры
-                  </h4>
-                  <div className="space-y-2 ml-7">
-                    <p className="text-muted-foreground">
-                      <a href="https://wa.me/79147922784" className="text-accent hover:underline" target="_blank" rel="noopener">WhatsApp (опт): +7 (914) 792-27-84</a>
-                    </p>
-                    <p className="text-muted-foreground">
-                      <a href="https://t.me/79147922784" className="text-accent hover:underline" target="_blank" rel="noopener">Telegram (опт): +7 (914) 792-27-84</a>
-                    </p>
-                    <p className="text-muted-foreground">
-                      <a href="https://wa.me/79147292149" className="text-accent hover:underline" target="_blank" rel="noopener">WhatsApp (розница): +7 (914) 729-21-49</a>
-                    </p>
+          <div>
+            <h3 className="text-2xl font-bold mb-6">Трубы напорные</h3>
+            <div className="mb-6">
+              <Select value={selectedPressureDiameter} onValueChange={setSelectedPressureDiameter}>
+                <SelectTrigger className="w-64">
+                  <SelectValue placeholder="Выберите диаметр" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Все диаметры</SelectItem>
+                  <SelectItem value="100">100 мм</SelectItem>
+                  <SelectItem value="150">150 мм</SelectItem>
+                  <SelectItem value="200">200 мм</SelectItem>
+                  <SelectItem value="300">300 мм</SelectItem>
+                  <SelectItem value="400">400 мм</SelectItem>
+                  <SelectItem value="500">500 мм</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {filteredPressurePipes.map((pipe, idx) => (
+                <Card key={idx} className="overflow-hidden hover:shadow-xl transition-shadow">
+                  <img src={pipe.image} alt={`Труба ${pipe.diameter}мм`} className="w-full h-48 object-cover" />
+                  <div className="p-6">
+                    <h4 className="text-xl font-bold mb-2">Труба напорная {pipe.diameter} мм</h4>
+                    <p className="text-muted-foreground mb-4">Длина: {pipe.length} мм</p>
+                    <Button onClick={() => scrollToSection('request-form')} className="w-full">Запросить цену</Button>
                   </div>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                    <Icon name="Mail" size={20} className="animate-icon" />
-                    Email
-                  </h4>
-                  <p className="text-muted-foreground ml-7">
-                    <a href="mailto:vostokinveststal@mail.ru" className="text-accent hover:underline">vostokinveststal@mail.ru</a>
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                    <Icon name="MapPin" size={20} className="animate-icon" />
-                    Адрес
-                  </h4>
-                  <p className="text-muted-foreground ml-7">г. Артем, ул. Вокзальная, 114</p>
-                </div>
-
-                <div>
-                  <h4 className="font-semibold text-primary mb-3 flex items-center gap-2">
-                    <Icon name="Clock" size={20} className="animate-icon" />
-                    Время работы
-                  </h4>
-                  <p className="text-muted-foreground ml-7">Пн-Пт: 8:30-17:30 (без обеда)</p>
-                  <p className="text-muted-foreground ml-7">Сб-Вс: Выходной</p>
-                </div>
-              </div>
-            </Card>
-
-            <div className="space-y-8">
-              <Card className="p-6">
-                <h3 className="text-xl font-bold text-primary mb-4">Оставить заявку</h3>
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <Input
-                    placeholder="Ваше имя"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    required
-                    className="h-10"
-                  />
-                  <Input
-                    type="tel"
-                    placeholder="Телефон"
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    required
-                    className="h-10"
-                  />
-                  <Input
-                    type="email"
-                    placeholder="Email (для рассылки)"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="h-10"
-                  />
-                  <Textarea
-                    placeholder="Ваш вопрос"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    rows={3}
-                    className="resize-none"
-                  />
-                  <Button type="submit" className="w-full bg-accent hover:bg-accent/90">
-                    Отправить заявку
-                  </Button>
-                </form>
-              </Card>
-
-              <a 
-                href="https://yandex.ru/maps/-/CDdkFCvv" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <iframe 
-                  src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=220003283954" 
-                  width="100%" 
-                  height="350" 
-                  frameBorder="0"
-                  className="pointer-events-none"
-                ></iframe>
-              </a>
+                </Card>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <footer className="bg-primary text-primary-foreground py-12 px-4">
-        <div className="container mx-auto max-w-6xl">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <section id="slate" className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-primary">Шифер</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {slates.map((slate, idx) => (
+              <Card key={idx} className="overflow-hidden hover:shadow-xl transition-shadow">
+                <img src={slate.image} alt={slate.type} className="w-full h-48 object-cover" />
+                <div className="p-6">
+                  <h4 className="text-xl font-bold mb-4">{slate.type}</h4>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-2xl">📐</span>
+                    <span className="text-muted-foreground">Размер: {slate.size} мм</span>
+                  </div>
+                  <div className="flex items-start gap-2 mb-4">
+                    <span className="text-2xl">🎨</span>
+                    <div>
+                      <div className="text-muted-foreground mb-2">Цвета:</div>
+                      <div className="flex flex-wrap gap-2">
+                        {slate.colors.map((color, cIdx) => (
+                          <span key={cIdx} className="px-3 py-1 bg-muted rounded-full text-sm">{color}</span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <Button onClick={() => scrollToSection('request-form')} className="w-full">Запросить цену</Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4 bg-muted/30">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-primary">Волнаколор</h2>
+          <div className="max-w-md mx-auto">
+            <Card className="overflow-hidden hover:shadow-xl transition-shadow">
+              <img src="https://images.unsplash.com/photo-1632207691143-643e2753a2c4?w=400&h=300&fit=crop" alt="Волнаколор" className="w-full h-48 object-cover" />
+              <div className="p-6">
+                <h4 className="text-xl font-bold mb-4">Шифер волнистый Волнаколор</h4>
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-2xl">📐</span>
+                  <span className="text-muted-foreground">Размер: 1750×1130 мм</span>
+                </div>
+                <div className="flex items-start gap-2 mb-4">
+                  <span className="text-2xl">🎨</span>
+                  <div>
+                    <div className="text-muted-foreground mb-2">Цвета:</div>
+                    <div className="flex flex-wrap gap-2">
+                      {['Серый', 'Красный', 'Зеленый', 'Коричневый'].map((color, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-muted rounded-full text-sm">{color}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <Button onClick={() => scrollToSection('request-form')} className="w-full">Запросить цену</Button>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 px-4">
+        <div className="container mx-auto">
+          <h2 className="text-4xl font-bold text-center mb-16 text-primary">Сертификаты и документы</h2>
+          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              { name: 'Сертификат соответствия ГОСТ', icon: 'FileCheck' },
+              { name: 'Протокол испытаний', icon: 'FileText' },
+              { name: 'Технические условия', icon: 'FileType' },
+            ].map((doc, idx) => (
+              <Card key={idx} className="p-6 text-center hover:shadow-xl transition-shadow cursor-pointer">
+                <Icon name={doc.icon} size={64} className="mx-auto mb-4 text-accent" />
+                <h4 className="font-bold">{doc.name}</h4>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="request-form" className="py-20 px-4 bg-primary text-white">
+        <div className="container mx-auto max-w-2xl">
+          <h2 className="text-4xl font-bold text-center mb-4">Получите коммерческое предложение за 2 часа</h2>
+          <p className="text-center text-white/90 mb-12">Заполните форму, и наш менеджер свяжется с вами</p>
+          <Card className="p-8">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <Input
+                placeholder="Ваше имя"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                required
+              />
+              <Input
+                type="tel"
+                placeholder="Телефон"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                required
+              />
+              <Select value={formData.product} onValueChange={(value) => setFormData({ ...formData, product: value })}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Выберите продукцию" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="pressure-free">Трубы безнапорные</SelectItem>
+                  <SelectItem value="pressure">Трубы напорные</SelectItem>
+                  <SelectItem value="slate">Шифер</SelectItem>
+                  <SelectItem value="volnacolor">Волнаколор</SelectItem>
+                </SelectContent>
+              </Select>
+              <Input
+                placeholder="Объем (м или шт.)"
+                value={formData.volume}
+                onChange={(e) => setFormData({ ...formData, volume: e.target.value })}
+              />
+              <Button type="submit" size="lg" className="w-full bg-accent hover:bg-accent/90 text-white">
+                <Icon name="Send" size={20} className="mr-2" />
+                Отправить запрос
+              </Button>
+            </form>
+          </Card>
+        </div>
+      </section>
+
+      <footer id="contacts" className="py-16 px-4 bg-gray-900 text-white">
+        <div className="container mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 mb-12">
             <div>
-              <h3 className="text-2xl font-bold mb-4">ВИС</h3>
-              <p className="text-primary-foreground/80">
-                Официальный дилер завода "Байкальский газобетон" в Приморском крае с 2003 года
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Быстрые ссылки</h4>
-              <div className="space-y-2">
-                <a href="#advantages" className="block text-primary-foreground/80 hover:text-primary-foreground">Преимущества</a>
-                <a href="#products" className="block text-primary-foreground/80 hover:text-primary-foreground">Продукция</a>
-                <a href="#contact" className="block text-primary-foreground/80 hover:text-primary-foreground">Контакты</a>
+              <h3 className="text-2xl font-bold mb-6">Контакты</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">📞</span>
+                  <div>
+                    <div><a href="tel:+74232448010" className="hover:text-accent">+7 (423) 244-80-10</a></div>
+                    <div><a href="tel:+79147922784" className="hover:text-accent">+7 (914) 792-27-84</a></div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">✉️</span>
+                  <a href="mailto:vostokinveststal@mail.ru" className="hover:text-accent">vostokinveststal@mail.ru</a>
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">📍</span>
+                  <span>г. Артём, ул. Вокзальная 114</span>
+                </div>
+              </div>
+              <div className="flex gap-4 mt-6">
+                <Button variant="outline" className="border-white text-white hover:bg-white/10">
+                  Telegram
+                </Button>
               </div>
             </div>
             <div>
-              <h4 className="font-semibold mb-4">Контакты</h4>
-              <div className="space-y-2 text-primary-foreground/80">
-                <p>+7 (423) 244-80-10</p>
-                <p>vostokinveststal@mail.ru</p>
-                <p>г. Артем, ул. Вокзальная, 114</p>
+              <div className="w-full h-64 rounded-lg overflow-hidden">
+                <iframe
+                  src="https://yandex.ru/map-widget/v1/?ll=132.187796,43.356417&z=14&l=map&pt=132.187796,43.356417,pm2rdm"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                ></iframe>
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-foreground/20 pt-8 text-center text-primary-foreground/60">
-            <p>© 2003-2024 ВИС. Все права защищены. 23 года на рынке строительных материалов.</p>
+          <div className="border-t border-gray-700 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 ВостокИнвестСталь. Все права защищены.</p>
+            <p className="mt-2">
+              <a href="#" className="hover:text-accent">Политика конфиденциальности</a>
+            </p>
           </div>
         </div>
       </footer>
